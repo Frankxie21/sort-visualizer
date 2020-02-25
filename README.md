@@ -1,4 +1,12 @@
-Clone or download the repo and type `npm start` in the terminal to use this project!
+You have to install `node.js` in your computer first to run this file. Click [node.js](https://nodejs.org/en/) for further information.
+
+1. Clone or download the repo.
+2. Run `npm install` to install all the dependencies.
+3. Run `npm start` to try it!
+
+
+
+
 
 =================================================================
 
