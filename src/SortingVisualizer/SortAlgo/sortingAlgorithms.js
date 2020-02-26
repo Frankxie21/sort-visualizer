@@ -1,6 +1,6 @@
 export function mergeSortAnimation(array) {
     const animations = [];
-    if (array.length <= 1) return array;
+    if (array.length <= 1) return;
     const auxiArray = array.slice();
     mergeSortHelper(array, 0, array.length - 1, auxiArray, animations);
     return animations;

@@ -3,6 +3,7 @@ import './SortingVisualizer.css';
 // import {mergeSortAnimation} from './SortAlgo/sortingAlgorithms.js'
 import {mergeSort} from './SortAlgo/mergeSortAlgorithm.js';
 import {bubbleSort} from './SortAlgo/bubbleSortAlgorithm.js';
+import {selectionSort} from './SortAlgo/selectionSortAlgorithm.js';
 
 export default class SortingVisualizer extends React.Component {
     constructor(props){
@@ -31,9 +32,10 @@ export default class SortingVisualizer extends React.Component {
         return (
             <div className = "array-container">
             <div>
-            <button onClick={() => this.resetArray()}>Generate New array</button>
-            <button onClick={() => mergeSort(this.state.array)}>Merge Sort</button>
-            <button onClick={() => bubbleSort(this.state.array)}>Bubble Sort</button>
+                <button onClick={() => this.resetArray()}>Generate New array</button>
+                <button onClick={() => mergeSort(this.state.array)}>Merge Sort</button>
+                <button onClick={() => bubbleSort(this.state.array)}>Bubble Sort</button>
+                <button onClick={() => selectionSort(this.state.array)}>Selection Sort</button>
             </div>
                 {array.map((value, idx) => (
                     <div className = "array-bar"

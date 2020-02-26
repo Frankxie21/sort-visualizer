@@ -19,9 +19,9 @@ export function bubbleSort(array) {
             setTimeout(() => {
                 barOneStyle.height = `${newHeight}px`;
             }, i * 10);
-            }
         }
     }
+}
 
 function getBubbleSortAnimation(array) {
     const animations = [];

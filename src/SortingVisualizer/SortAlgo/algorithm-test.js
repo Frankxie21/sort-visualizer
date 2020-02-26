@@ -7,7 +7,7 @@ function testSortingAlgorithms() {
         array.push(randomIntFromInterval(-1000, 1000));
       }
       const javaScriptSortedArray = array.slice().sort((a, b) => a - b);
-      const selfSortedArray = bubbleSort(array.slice());
+      const selfSortedArray = getSelectionSortAnimation(array.slice());
       console.log(arraysAreEqual(javaScriptSortedArray, selfSortedArray));
     }
   }
@@ -26,4 +26,47 @@ function arraysAreEqual(arrayOne, arrayTwo) {
   return true;
 }
 
-testSortingAlgorithms();
+
+function getSelectionSortAnimation (array) {
+    const animations = [];
+    if (array.length <= 1) return array;
+    for (var i = 0; i < array.length; i++) {
+        var selectionIndex = 0;
+        for (var j = 0; j < array.length - i; j++) {
+            if (array[selectionIndex] < array[j]) { 
+                selectionIndex = j;
+            }
+            var temp = array[array.length-1-i];
+            array[array.length-1-i] = array[selectionIndex];
+            array[selectionIndex] = temp;
+        }
+    }
+    return array;
+}
+
+// testSortingAlgorithms();
+
+
+function getSelectionSortAnimation (array) {
+    const animations = [];
+    const swapIndex = [];
+    if (array.length <= 1) return array;
+    for (var i = 0; i < array.length; i++) {
+        var selectionIndex = 0;
+        for (var j = 0; j < array.length - i; j++) {
+            animations.push([selectionIndex, j]);
+            animations.push([selectionIndex, j]);
+            if (array[selectionIndex] < array[j]) { 
+                selectionIndex = j;
+            }
+        }
+        var temp = array[array.length-1-i];
+        array[array.length-1-i] = array[selectionIndex];
+        array[selectionIndex] = temp;
+        animations.push([selectionIndex, array.length-1-i, array[selectionIndex], array[array.length-1-i]]);
+        swapIndex.push(animations.length-1);
+    }
+    return [animations, swapIndex];
+}
+
+console.log(getSelectionSortAnimation([1,2,3,4,12,3,4,2]));
