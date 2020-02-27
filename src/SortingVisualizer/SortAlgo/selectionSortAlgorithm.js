@@ -23,7 +23,7 @@ export function selectionSort(array) {
                 barOneStyle.backgroundColor = `red`;
                 barTwoStyle.backgroundColor = color;
                 // change the barColor if the selected bar changed.
-                if (barOneIdx != prevSelectedBarIndex) {
+                if (barOneIdx !== prevSelectedBarIndex) {
                     const barPrevStyle = arrayBars[prevSelectedBarIndex].style;
                     barPrevStyle.backgroundColor = `blue`;
                     prevSelectedBarIndex = barOneIdx;

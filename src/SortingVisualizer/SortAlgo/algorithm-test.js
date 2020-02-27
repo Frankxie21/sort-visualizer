@@ -1,4 +1,3 @@
-
 function testSortingAlgorithms() {
     for (let i = 0; i < 100; i++) {
       const array = [];
@@ -7,7 +6,8 @@ function testSortingAlgorithms() {
         array.push(randomIntFromInterval(-1000, 1000));
       }
       const javaScriptSortedArray = array.slice().sort((a, b) => a - b);
-      const selfSortedArray = getSelectionSortAnimation(array.slice());
+      const selfSortedArray = getQuickSortAnimation(array.slice());
+      // quickSort(array, 0, array.length - 1);
       console.log(arraysAreEqual(javaScriptSortedArray, selfSortedArray));
     }
   }
@@ -27,46 +27,36 @@ function arraysAreEqual(arrayOne, arrayTwo) {
 }
 
 
-function getSelectionSortAnimation (array) {
+function getQuickSortAnimation(array) {
     const animations = [];
-    if (array.length <= 1) return array;
-    for (var i = 0; i < array.length; i++) {
-        var selectionIndex = 0;
-        for (var j = 0; j < array.length - i; j++) {
-            if (array[selectionIndex] < array[j]) { 
-                selectionIndex = j;
-            }
-            var temp = array[array.length-1-i];
-            array[array.length-1-i] = array[selectionIndex];
-            array[selectionIndex] = temp;
-        }
-    }
+    quickSortHelper(array, 0, array.length - 1, animations);
     return array;
 }
 
-// testSortingAlgorithms();
-
-
-function getSelectionSortAnimation (array) {
-    const animations = [];
-    const swapIndex = [];
-    if (array.length <= 1) return array;
-    for (var i = 0; i < array.length; i++) {
-        var selectionIndex = 0;
-        for (var j = 0; j < array.length - i; j++) {
-            animations.push([selectionIndex, j]);
-            animations.push([selectionIndex, j]);
-            if (array[selectionIndex] < array[j]) { 
-                selectionIndex = j;
-            }
-        }
-        var temp = array[array.length-1-i];
-        array[array.length-1-i] = array[selectionIndex];
-        array[selectionIndex] = temp;
-        animations.push([selectionIndex, array.length-1-i, array[selectionIndex], array[array.length-1-i]]);
-        swapIndex.push(animations.length-1);
+function quickSortHelper(array, low, high, animations) {
+    // const animations = [];
+    if (low < high) {
+        const pi = partition(array, low, high, animations);
+        quickSortHelper(array, low, pi - 1, animations);
+        quickSortHelper(array, pi + 1, high, animations);
     }
-    return [animations, swapIndex];
 }
 
-console.log(getSelectionSortAnimation([1,2,3,4,12,3,4,2]));
+function partition(array, low, high, animations) {
+    const pivot = array[high];
+    var i = low;
+    for (var j = low; j <= high - 1; j++) {
+        animations.push([0, i, j, high]);
+        if (array[j] < pivot) {
+            [array[i], array[j]] = [array[j], array[i]];
+            i++;
+            animations.push([1, i, j, array[i], array[j]]);
+        }
+        animations.push([2, i, j, high]);
+    }
+    [array[i], array[high]] = [array[high], array[i]];
+    animations.push([3, i, high, array[i], array[high]]);
+    return i;
+}
+
+testSortingAlgorithms();

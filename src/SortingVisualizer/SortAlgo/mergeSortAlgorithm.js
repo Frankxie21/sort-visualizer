@@ -1,5 +1,5 @@
 export function mergeSort(array) {
-    const animations = getAnimation(array);
+    const animations = getMergeSortAnimation(array);
     for (var i = 0; i < animations.length; i++) {
         const arrayBars = document.getElementsByClassName('array-bar');
         const isColorChange = i % 3 !== 2;
@@ -18,11 +18,11 @@ export function mergeSort(array) {
             setTimeout(() => {
                 barOneStyle.height = `${newHeight}px`;
             }, i * 10);
-            }
         }
     }
+}
 
-function getAnimation(array) {
+function getMergeSortAnimation(array) {
     const animations = [];
     if (array.length <= 1) return array;
     const auxiArray = array.slice();

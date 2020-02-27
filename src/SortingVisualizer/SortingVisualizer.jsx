@@ -4,6 +4,7 @@ import './SortingVisualizer.css';
 import {mergeSort} from './SortAlgo/mergeSortAlgorithm.js';
 import {bubbleSort} from './SortAlgo/bubbleSortAlgorithm.js';
 import {selectionSort} from './SortAlgo/selectionSortAlgorithm.js';
+import {quickSort} from './SortAlgo/quickSortAlgorithm.js';
 
 export default class SortingVisualizer extends React.Component {
     constructor(props){
@@ -20,7 +21,7 @@ export default class SortingVisualizer extends React.Component {
 
     resetArray() {
         const array = [];
-        for (var i = 0; i < 300; i++) {
+        for (var i = 0; i < 50; i++) {
             array.push(randomIntFromInterval(5,500));
         }
         this.setState({array});
@@ -30,21 +31,21 @@ export default class SortingVisualizer extends React.Component {
         const {array} = this.state;
 
         return (
-            <div className = "array-container">
+            <div className = 'array-container'>
             <div>
                 <button onClick={() => this.resetArray()}>Generate New array</button>
                 <button onClick={() => mergeSort(this.state.array)}>Merge Sort</button>
                 <button onClick={() => bubbleSort(this.state.array)}>Bubble Sort</button>
                 <button onClick={() => selectionSort(this.state.array)}>Selection Sort</button>
+                <button onClick={() => quickSort(this.state.array)}>Quick Sort</button>
             </div>
                 {array.map((value, idx) => (
-                    <div className = "array-bar"
+                    <div className = 'array-bar'
                          key = {idx}
                          style = {{backgroundColor: 'blue',
                                    height: `${value}px`, }}>
                     </div>
                 ))}
-
             </div>
             );
     }
