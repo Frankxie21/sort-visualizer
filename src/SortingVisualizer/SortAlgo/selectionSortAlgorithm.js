@@ -13,7 +13,8 @@ export function selectionSort(array) {
             setTimeout(() => {
                 barOneStyle.height = `${lHeight}px`;
                 barTwoStyle.height = `${hHeight}px`;
-            }, i * 10);
+                barTwoStyle.backgroundColor = 'pink';
+            }, i * 1);
         } else {
             const color = colorChange === true ? 'blue' : 'red';
             const [barOneIdx, barTwoIdx] = animations[i];
@@ -25,10 +26,12 @@ export function selectionSort(array) {
                 // change the barColor if the selected bar changed.
                 if (barOneIdx !== prevSelectedBarIndex) {
                     const barPrevStyle = arrayBars[prevSelectedBarIndex].style;
-                    barPrevStyle.backgroundColor = `blue`;
+                    if (barPrevStyle.backgroundColor !== 'pink') {
+                        barPrevStyle.backgroundColor = `blue`;
+                    }
                     prevSelectedBarIndex = barOneIdx;
                 }
-            }, i * 10);
+            }, i * 1);
         }
     }
 }
@@ -40,15 +43,13 @@ function getSelectionSortAnimation (array) {
     for (var i = 0; i < array.length; i++) {
         var selectionIndex = 0;
         for (var j = 0; j < array.length - i; j++) {
-            if (array[selectionIndex] < array[j]) { 
+            if (array[selectionIndex] <= array[j]) { 
                 selectionIndex = j;
             }
             animations.push([selectionIndex, j]);
             animations.push([selectionIndex, j]);
         }
-        var temp = array[array.length-1-i];
-        array[array.length-1-i] = array[selectionIndex];
-        array[selectionIndex] = temp;
+        [array[array.length-1-i], array[selectionIndex]] = [array[selectionIndex], array[array.length-1-i]]
         animations.push([selectionIndex, array.length-1-i, array[selectionIndex], array[array.length-1-i]]);
         swapIndex.push(animations.length-1);
     }

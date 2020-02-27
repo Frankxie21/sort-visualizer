@@ -1,5 +1,6 @@
 import React from 'react';
 import './SortingVisualizer.css';
+import {resetArrayColor} from './resetColor.js';
 // import {mergeSortAnimation} from './SortAlgo/sortingAlgorithms.js'
 import {mergeSort} from './SortAlgo/mergeSortAlgorithm.js';
 import {bubbleSort} from './SortAlgo/bubbleSortAlgorithm.js';
@@ -16,10 +17,10 @@ export default class SortingVisualizer extends React.Component {
     }
 
     componentDidMount() {
-        this.resetArray();
+        this.resetArrayNumber();
     }
 
-    resetArray() {
+    resetArrayNumber() {
         const array = [];
         for (var i = 0; i < 50; i++) {
             array.push(randomIntFromInterval(5,500));
@@ -27,25 +28,32 @@ export default class SortingVisualizer extends React.Component {
         this.setState({array});
     }
 
+    resetView() {
+        this.resetArrayNumber();
+        resetArrayColor(this.state.array);
+    }
+
     render() {
         const {array} = this.state;
 
         return (
-            <div className = 'array-container'>
+            <div className = 'container'>
             <div>
-                <button onClick={() => this.resetArray()}>Generate New array</button>
-                <button onClick={() => mergeSort(this.state.array)}>Merge Sort</button>
-                <button onClick={() => bubbleSort(this.state.array)}>Bubble Sort</button>
-                <button onClick={() => selectionSort(this.state.array)}>Selection Sort</button>
-                <button onClick={() => quickSort(this.state.array)}>Quick Sort</button>
+                <button onClick={() => this.resetView()} className='btn btn-lg btn-primary'>Generate New array</button>
+                <button onClick={() => mergeSort(this.state.array)} className='btn btn-lg btn-secondary'>Merge Sort</button>
+                <button onClick={() => bubbleSort(this.state.array)} className='btn btn-lg btn-secondary'>Bubble Sort</button>
+                <button onClick={() => selectionSort(this.state.array)} className='btn btn-lg btn-secondary'>Selection Sort</button>
+                <button onClick={() => quickSort(this.state.array)} className='btn btn-lg btn-secondary'>Quick Sort</button>
             </div>
                 {array.map((value, idx) => (
-                    <div className = 'array-bar'
+                    <span className = 'array-bar'
                          key = {idx}
                          style = {{backgroundColor: 'blue',
                                    height: `${value}px`, }}>
-                    </div>
+                    </span>
                 ))}
+                    <span style={{height: '600px', width:'1px', display: 'inline-block'}}>
+                    </span>
             </div>
             );
     }

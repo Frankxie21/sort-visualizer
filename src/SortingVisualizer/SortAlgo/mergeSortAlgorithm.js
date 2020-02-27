@@ -3,7 +3,7 @@ export function mergeSort(array) {
     for (var i = 0; i < animations.length; i++) {
         const arrayBars = document.getElementsByClassName('array-bar');
         const isColorChange = i % 3 !== 2;
-        if (isColorChange) {
+        if (isColorChange && (i <= (animations.length - 151))) {
             const [barOneIdx, barTwoIdx] = animations[i];
             const barOneStyle = arrayBars[barOneIdx].style;
             const barTwoStyle = arrayBars[barTwoIdx].style;
@@ -11,13 +11,15 @@ export function mergeSort(array) {
             setTimeout(() => {
                 barOneStyle.backgroundColor = color;
                 barTwoStyle.backgroundColor = color;
-            }, i * 10);
-        } else {
+            }, i * 1);
+        } else if (!isColorChange) {
             const [barOneIdx, newHeight] = animations[i];
             const barOneStyle = arrayBars[barOneIdx].style;
+            const color = (i > (animations.length - 151)) ? 'pink' : 'blue';
             setTimeout(() => {
                 barOneStyle.height = `${newHeight}px`;
-            }, i * 10);
+                barOneStyle.backgroundColor = color;
+            }, i * 1);
         }
     }
 }
