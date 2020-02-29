@@ -1,7 +1,6 @@
 import React from 'react';
 import './SortingVisualizer.css';
 import {resetArrayColor} from './resetColor.js';
-// import {mergeSortAnimation} from './SortAlgo/sortingAlgorithms.js'
 import {mergeSort} from './SortAlgo/mergeSortAlgorithm.js';
 import {bubbleSort} from './SortAlgo/bubbleSortAlgorithm.js';
 import {selectionSort} from './SortAlgo/selectionSortAlgorithm.js';

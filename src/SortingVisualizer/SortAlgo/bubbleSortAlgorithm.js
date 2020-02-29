@@ -1,4 +1,8 @@
 export function bubbleSort(array) {
+    const btn = document.getElementsByTagName('button');
+    for (var i = 0; i < btn.length; i++) {
+        btn[i].disabled = true;
+    }
     var [animations, doneIndex] = getBubbleSortAnimation(array);
     console.log(doneIndex);
     for (var i = 0; i < animations.length; i++) {
@@ -12,24 +16,28 @@ export function bubbleSort(array) {
             setTimeout(() => {
                 barOneStyle.backgroundColor = color;
                 barTwoStyle.backgroundColor = color;
-            }, i * 1);
+            }, i * 15);
         } else {
             const [barOneIdx, newHeight] = animations[i];
             const barOneStyle = arrayBars[barOneIdx].style;
-            const color = i === doneIndex[0] ? 'pink' : 'blue';
+            const color = i === doneIndex[0] ? 'green' : 'blue';
             if (i === doneIndex[0]) {
                 doneIndex.shift();
             };
             setTimeout(() => {
                 barOneStyle.height = `${newHeight}px`;
                 barOneStyle.backgroundColor = color;
-            }, i * 1);
+            }, i * 15);
         }
     }
     const arrayBars = document.getElementsByClassName('array-bar');
     setTimeout(() => {
-        arrayBars[0].style.backgroundColor = 'pink';
-    }, animations.length * 1);
+        arrayBars[0].style.backgroundColor = 'green';
+        for (var i = 0; i < btn.length; i++) {
+            btn[i].disabled = false;
+        }
+    }, animations.length * 15);
+
 }
 
 function getBubbleSortAnimation(array) {

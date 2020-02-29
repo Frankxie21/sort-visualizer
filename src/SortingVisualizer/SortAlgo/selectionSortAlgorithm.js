@@ -1,4 +1,8 @@
 export function selectionSort(array) {
+    const btn = document.getElementsByTagName('button');
+    for (var i = 0; i < btn.length; i++) {
+        btn[i].disabled = true;
+    }
     var [animations, swapIndex] = getSelectionSortAnimation(array);
     var prevSelectedBarIndex = 0;
     for (var i = 0; i < animations.length; i++) {
@@ -13,8 +17,8 @@ export function selectionSort(array) {
             setTimeout(() => {
                 barOneStyle.height = `${lHeight}px`;
                 barTwoStyle.height = `${hHeight}px`;
-                barTwoStyle.backgroundColor = 'pink';
-            }, i * 1);
+                barTwoStyle.backgroundColor = 'green';
+            }, i * 15);
         } else {
             const color = colorChange === true ? 'blue' : 'red';
             const [barOneIdx, barTwoIdx] = animations[i];
@@ -26,14 +30,19 @@ export function selectionSort(array) {
                 // change the barColor if the selected bar changed.
                 if (barOneIdx !== prevSelectedBarIndex) {
                     const barPrevStyle = arrayBars[prevSelectedBarIndex].style;
-                    if (barPrevStyle.backgroundColor !== 'pink') {
+                    if (barPrevStyle.backgroundColor !== 'green') {
                         barPrevStyle.backgroundColor = `blue`;
                     }
                     prevSelectedBarIndex = barOneIdx;
                 }
-            }, i * 1);
+            }, i * 15);
         }
     }
+    setTimeout(() => {
+        for (var i = 0; i < btn.length; i++) {
+            btn[i].disabled = false;
+        }
+    });
 }
 
 function getSelectionSortAnimation (array) {

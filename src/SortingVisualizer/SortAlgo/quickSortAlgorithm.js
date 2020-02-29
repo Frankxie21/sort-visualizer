@@ -1,8 +1,12 @@
 export function quickSort(array) {
+    const btn = document.getElementsByTagName('button');
+    for (var i = 0; i < btn.length; i++) {
+        btn[i].disabled = true;
+    }
     const defaultColor = 'blue';
-    const pivotColor = 'green';
+    const pivotColor = 'orange';
     const comparingColor = 'red';
-    const resultColor = 'pink';
+    const resultColor = 'green';
     const animations = getQuickSortAnimation(array);
     for (var i = 0; i < animations.length; i++) {
         const arrayBars = document.getElementsByClassName('array-bar');
@@ -15,7 +19,7 @@ export function quickSort(array) {
                 barOneStyle.backgroundColor = comparingColor;
                 barTwoStyle.backgroundColor = comparingColor;
                 pivotStyle.backgroundColor = pivotColor;
-            }, i * 1);
+            }, i * 25);
         } else if (animations[i][0] === 1) {
             const [_, barOneIdx, barTwoIdx, barOneHeight, barTwoHeight] = animations[i];
             const barOneStyle = arrayBars[barOneIdx].style;
@@ -25,7 +29,7 @@ export function quickSort(array) {
                 barOneStyle.backgroundColor = defaultColor;
                 barTwoStyle.height = `${barTwoHeight}px`;
                 barTwoStyle.backgroundColor = defaultColor;
-            }, i * 1);
+            }, i * 25);
         } else if (animations[i][0] === 2) {
             const [_, barOneIdx, barTwoIdx, barOneHeight, barTwoHeight] = animations[i];
             const barOneStyle = arrayBars[barOneIdx].style;
@@ -35,9 +39,14 @@ export function quickSort(array) {
                 barTwoStyle.height = `${barTwoHeight}px`;
                 barTwoStyle.backgroundColor = defaultColor;
                 barOneStyle.backgroundColor = resultColor;
-            }, i * 1);
+            }, i * 25);
         }
     }
+    setTimeout(() => {
+        for (var i = 0; i < btn.length; i++) {
+            btn[i].disabled = false;
+        }
+    });
 }
 
 function getQuickSortAnimation(array) {

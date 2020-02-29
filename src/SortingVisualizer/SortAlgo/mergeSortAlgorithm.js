@@ -1,4 +1,8 @@
 export function mergeSort(array) {
+    const btn = document.getElementsByTagName('button');
+    for (var i = 0; i < btn.length; i++) {
+        btn[i].disabled = true;
+    }
     const animations = getMergeSortAnimation(array);
     for (var i = 0; i < animations.length; i++) {
         const arrayBars = document.getElementsByClassName('array-bar');
@@ -11,17 +15,22 @@ export function mergeSort(array) {
             setTimeout(() => {
                 barOneStyle.backgroundColor = color;
                 barTwoStyle.backgroundColor = color;
-            }, i * 1);
+            }, i * 15);
         } else if (!isColorChange) {
             const [barOneIdx, newHeight] = animations[i];
             const barOneStyle = arrayBars[barOneIdx].style;
-            const color = (i > (animations.length - 151)) ? 'pink' : 'blue';
+            const color = (i > (animations.length - 151)) ? 'green' : 'blue';
             setTimeout(() => {
                 barOneStyle.height = `${newHeight}px`;
                 barOneStyle.backgroundColor = color;
-            }, i * 1);
+            }, i * 15);
         }
     }
+    setTimeout(() => {
+        for (var i = 0; i < btn.length; i++) {
+            btn[i].disabled = false;
+        }
+    }, animations.length * 15);
 }
 
 function getMergeSortAnimation(array) {
