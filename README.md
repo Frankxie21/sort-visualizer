@@ -1,12 +1,13 @@
-You have to install `node.js` in your computer first to run this file. Click [node.js](https://nodejs.org/en/) for further information.
+##### Click [Here](https://visualizingsortalgo.herokuapp.com/) to view
+
+If you want to modify it locally, you have to install `node.js` in your computer first. Click [node.js](https://nodejs.org/en/) for further information.
 
 1. Clone or download the repo.
 2. Run `npm install` to install all the dependencies.
 3. Run `npm start` to try it!
 
+### Useful link
 [React Bootstrap Tutorial](https://www.techiediaries.com/react-bootstrap/)
-
-
 
 =================================================================
 
