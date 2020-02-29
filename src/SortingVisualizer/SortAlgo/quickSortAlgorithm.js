@@ -43,9 +43,7 @@ export function quickSort(array) {
         }
     }
     setTimeout(() => {
-        for (var i = 0; i < btn.length; i++) {
-            btn[i].disabled = false;
-        }
+        btn[0].disabled = false;
     });
 }
 

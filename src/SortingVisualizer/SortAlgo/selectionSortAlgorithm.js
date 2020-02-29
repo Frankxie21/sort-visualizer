@@ -18,7 +18,7 @@ export function selectionSort(array) {
                 barOneStyle.height = `${lHeight}px`;
                 barTwoStyle.height = `${hHeight}px`;
                 barTwoStyle.backgroundColor = 'green';
-            }, i * 15);
+            }, i * 5);
         } else {
             const color = colorChange === true ? 'blue' : 'red';
             const [barOneIdx, barTwoIdx] = animations[i];
@@ -35,13 +35,11 @@ export function selectionSort(array) {
                     }
                     prevSelectedBarIndex = barOneIdx;
                 }
-            }, i * 15);
+            }, i * 5);
         }
     }
     setTimeout(() => {
-        for (var i = 0; i < btn.length; i++) {
-            btn[i].disabled = false;
-        }
+        btn[0].disabled = false;
     });
 }
 

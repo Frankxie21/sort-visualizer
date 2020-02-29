@@ -1,6 +1,6 @@
 import React from 'react';
 import './SortingVisualizer.css';
-import {resetArrayColor} from './resetColor.js';
+import {resetArrayColor, resetButton} from './reset.js';
 import {mergeSort} from './SortAlgo/mergeSortAlgorithm.js';
 import {bubbleSort} from './SortAlgo/bubbleSortAlgorithm.js';
 import {selectionSort} from './SortAlgo/selectionSortAlgorithm.js';
@@ -30,6 +30,7 @@ export default class SortingVisualizer extends React.Component {
     resetView() {
         this.resetArrayNumber();
         resetArrayColor(this.state.array);
+        resetButton();
     }
 
     render() {
