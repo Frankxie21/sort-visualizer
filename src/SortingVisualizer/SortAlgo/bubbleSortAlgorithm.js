@@ -16,7 +16,7 @@ export function bubbleSort(array) {
             setTimeout(() => {
                 barOneStyle.backgroundColor = color;
                 barTwoStyle.backgroundColor = color;
-            }, i * 15);
+            }, i * 5);
         } else {
             const [barOneIdx, newHeight] = animations[i];
             const barOneStyle = arrayBars[barOneIdx].style;
@@ -27,16 +27,14 @@ export function bubbleSort(array) {
             setTimeout(() => {
                 barOneStyle.height = `${newHeight}px`;
                 barOneStyle.backgroundColor = color;
-            }, i * 15);
+            }, i * 5);
         }
     }
     const arrayBars = document.getElementsByClassName('array-bar');
     setTimeout(() => {
         arrayBars[0].style.backgroundColor = 'green';
-        for (var i = 0; i < btn.length; i++) {
-            btn[i].disabled = false;
-        }
-    }, animations.length * 15);
+        btn[0].disabled = false;
+    }, animations.length * 5);
 
 }
 

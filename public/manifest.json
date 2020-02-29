@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
   "short_name": "Sorting Algorithm Visualizer",
   "name": "Create React App Sample",
+=======
+  "short_name": "Sorting Algorithms Visualizer",
+  "name": "Sorting Algorithms Visualizer",
+>>>>>>> origin/master
   "icons": [
     {
       "src": "favicon.ico",
